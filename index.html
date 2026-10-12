@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Homelab</title>
+  <meta name="theme-color" content="#0f1419">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Homelab">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Homelab</h1>
+    <span id="conn" class="pill">…</span>
+    <button id="open-settings" aria-label="Configurações">⚙︎</button>
+  </header>
+
+  <main id="dashboard" hidden>
+    <section id="hero" class="hero ok">
+      <span class="badge" id="hero-icon">✓</span>
+      <div><strong id="hero-title"></strong><span id="hero-sub"></span></div>
+    </section>
+
+    <section class="tiles">
+      <article class="tile" id="cpu"></article>
+      <article class="tile" id="mem"></article>
+      <article class="tile" id="disk"></article>
+      <article class="tile" id="temp"></article>
+    </section>
+
+    <section class="panels">
+      <div class="card"><h2>Serviços</h2><ul id="services" class="services"></ul></div>
+      <div class="card"><h2>Containers</h2><ul id="containers"></ul></div>
+    </section>
+
+    <p id="updated"></p>
+  </main>
+
+  <dialog id="settings">
+    <form method="dialog" id="settings-form">
+      <h2>Conexão</h2>
+      <label>URL do agente
+        <input id="url" type="url" placeholder="https://notebook.tailnet.ts.net:8443" required autocomplete="off">
+      </label>
+      <label>Token
+        <input id="token" type="password" required autocomplete="off">
+      </label>
+      <p class="hint">Fica salvo só neste aparelho. O Tailscale precisa estar conectado.</p>
+      <div class="actions">
+        <button type="button" id="cancel">Cancelar</button>
+        <button type="submit" class="primary">Salvar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
